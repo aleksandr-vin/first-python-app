@@ -78,12 +78,17 @@ global number
 try:
     number = int(argv[1])
 except ValueError:
-    exit ("""
+    exit("""
 Wrong type of the input value: %s.
 Only integers >= 0 are allowed.
 """ % argv[1])
 
-result = factorial(number)
-print result
+try:
+    print factorial(number)
+except RuntimeError:
+    exit("""
+Too big input number supplied: %s
+Increase recursion depth and retry.
+""" % argv[1])
 
 exit(0)
