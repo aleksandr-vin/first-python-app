@@ -73,7 +73,16 @@ if len(argv) != 2:
     usage()
     exit(1)
 
-number = int(argv[1])
+global number
+
+try:
+    number = int(argv[1])
+except ValueError:
+    exit ("""
+Wrong type of the input value: %s.
+Only integers >= 0 are allowed.
+""" % argv[1])
+
 result = factorial(number)
 print result
 
